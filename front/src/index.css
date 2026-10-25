@@ -1,1 +1,53 @@
 @import "tailwindcss";
+
+@theme {
+  /* Superficie (cielo) */
+  --color-sky-deep:  #0F2A4A;
+  --color-sky-mid:   #2C6AA6;
+  --color-sky-light: #5FA8E8;
+  --color-sky-sun:   #FFC27A;
+
+  /* Mar superior */
+  --color-sea-surface: #427EB5;
+  --color-sea-top:     #205A8E;
+  --color-sea-mid:     #1C497D;
+  --color-sea-deep:    #1A497E;
+
+  /* Mar inferior / abismo */
+  --color-abyss-top:  #1A497E;
+  --color-abyss-mid:  #1B2F47;
+  --color-abyss-deep: #09121E;
+
+  /* Acento decorativo — NUNCA texto sobre fondo claro */
+  --color-glint: #3B98FF;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-abyss-deep);
+  }
+}
+
+@layer components {
+  .zone-surface {
+    background: var(--color-sky-light);
+  }
+
+  .zone-upper-sea {
+    background: linear-gradient(
+      to bottom,
+      var(--color-sea-top)  0%,
+      var(--color-sea-mid)  45%,
+      var(--color-sea-deep) 100%
+    );
+  }
+
+  .zone-deep-sea {
+    background: linear-gradient(
+      to bottom,
+      var(--color-abyss-top)  0%,
+      var(--color-abyss-mid)  55%,
+      var(--color-abyss-deep) 100%
+    );
+  }
+}
