@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 export default function Navbar() {
   const navItems = [
     { name: 'Inicio', href: '/' },
-    { name: 'Proyectos', href: '/proyectos' },
     { name: 'Sobre mí', href: '/sobre-mi' },
+    { name: 'Proyectos', href: '/proyectos' },
     { name: 'Experiencia', href: '/experiencia' },
     { name: 'Formación', href: '/formacion' },
     { name: 'Habilidades', href: '/habilidades' },

@@ -5,26 +5,30 @@ import Experiencia from './Experiencia'
 import Formacion from './Formacion'
 import Habilidades from './Habilidades'
 import Contacto from './Contacto'
-import HorizonLine from '../common/components/HorizonLine'
+import surfaceImage from '../assets/surface.webp'
 
 export default function Home() {
   return (
     <div>
-      {/* Zona 1: Superficie — cielo plano + línea del horizonte */}
-      <div className="zone-surface">
+      <div
+        className="zone-surface pt-[var(--header-h,64px)]"
+        style={{
+          backgroundImage: `url(${surfaceImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
         <Hero />
-        <HorizonLine />
+        <SobreMi variant="preview" />
       </div>
 
-      {/* Zona 2: Mar superior */}
       <div className="zone-upper-sea">
-        <SobreMi />
         <Proyectos />
         <Experiencia />
         <Formacion />
       </div>
 
-      {/* Zona 3: Mar inferior */}
       <div className="zone-deep-sea">
         <Habilidades />
         <Contacto />
