@@ -1,21 +1,19 @@
+import EducationCard from '../components/EducationCard';
+import { certificatesData } from '../data/education';
+
 export default function Formacion() {
   return (
-    <section id="education" className="px-6 py-16 max-w-5xl mx-auto border-t border-slate-800">
-      <h2 className="text-2xl font-semibold mb-6">Formación</h2>
-      <ul className="space-y-4 text-slate-300">
-        <li>
-          <strong className="text-slate-100">IPLACEX</strong> — Técnico en Desarrollo
-          de Aplicaciones Multiplataforma (egresado 2023)
-        </li>
-        <li>
-          <strong className="text-slate-100">Fundación Pescar · JP Morgan · Finnegans · Educación IT</strong>{" "}
-          — Desarrollo Web Full Stack (en curso)
-        </li>
-        <li>
-          <strong className="text-slate-100">Santander Open Academy</strong> —
-          Fundamentos de Ciberseguridad, Ciencia de Datos (en curso)
-        </li>
-      </ul>
+    <section id="education" className="px-6 py-16 max-w-5xl mx-auto">
+      <div className="flex items-center gap-4 mb-10">
+        <h2 className="text-3xl font-bold text-white tracking-tight">Formación</h2>
+        <div className="h-px bg-gradient-to-r from-cyan-500/50 to-transparent flex-1" />
+      </div>
+
+      <div className="grid gap-6 sm:grid-cols-2">
+        {certificatesData.map((cert) => (
+          <EducationCard key={cert.id} education={cert} />
+        ))}
+      </div>
     </section>
   );
 }

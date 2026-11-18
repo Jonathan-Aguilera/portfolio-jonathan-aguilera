@@ -1,10 +1,12 @@
 import Hero from '../sections/Hero'
 import SobreMi from './SobreMi'
-import Proyectos from './Proyectos'
-import Experiencia from './Experiencia'
-import Formacion from './Formacion'
-import Habilidades from './Habilidades'
 import Contacto from './Contacto'
+import ProyectosPreview from '../components/preview/ProyectosPreview'
+import ExperienciaPreview from '../components/preview/ExperienciaPreview'
+import FormacionPreview from '../components/preview/FormacionPreview'
+import HabilidadesPreview from '../components/preview/HabilidadesPreview'
+
+
 import surfaceImage from '../assets/surface.webp'
 
 export default function Home() {
@@ -24,13 +26,13 @@ export default function Home() {
       </div>
 
       <div className="zone-upper-sea">
-        <Proyectos />
-        <Experiencia />
-        <Formacion />
+        <ProyectosPreview />
+        <ExperienciaPreview />
+        <FormacionPreview />
       </div>
 
       <div className="zone-deep-sea">
-        <Habilidades />
+        <HabilidadesPreview />
         <Contacto />
       </div>
     </div>
