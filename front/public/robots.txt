@@ -1,0 +1,6 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+# URL de sitemap estimada para tu despliegue en Vercel
+Sitemap: https://tsc-portafolio.vercel.app/sitemap.xml

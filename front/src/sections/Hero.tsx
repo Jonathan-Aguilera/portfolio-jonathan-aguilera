@@ -24,7 +24,7 @@ export default function Hero() {
           <p className="mt-6 text-lg md:text-xl text-white/90 leading-relaxed">
             Desarrollador Fullstack con especialización en Backend y Bases de Datos.
             Construyo aplicaciones web completas con React, Angular, TypeScript,
-            Node.js y PostgreSQL.
+            Node.js, Firebase y PostgreSQL.
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4">

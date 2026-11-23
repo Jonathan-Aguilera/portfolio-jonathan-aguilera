@@ -1,13 +1,4 @@
-export interface Certificate {
-  id: string;
-  title: string;
-  issuer: string;
-  year: string;
-  imageUrl: string; 
-  credentialUrl?: string; 
-  level: 1 | 2 | 3; // 1: Título/Base, 2: IT Complementario, 3: Otras áreas
-  category: string; 
-}
+import type { Certificate } from '../types';
 
 export const certificatesData: Certificate[] = [
   // ==========================================
@@ -18,108 +9,54 @@ export const certificatesData: Certificate[] = [
     title: 'Técnico en Desarrollo de Aplicaciones Multiplataforma',
     issuer: 'Iplacex',
     year: '2024',
-    imageUrl: '/assets/certs/titulo-iplacex.jpg',
-    credentialUrl: 'https://portalestudiante.iplacex.cl/validar/certificado', // Pon el código de validación si quieres
+    imageUrl: '/certificates/Certificado-titulo.webp',
+    codigoValidacion: '6571857376699916032',
+    credentialUrl: 'https://portalestudiante.iplacex.cl/validar/certificado',
     level: 1,
     category: 'Título Técnico'
   },
-  // NOTA: Aquí iría también la Beca de Fundación Pescar cuando tengas la imagen.
 
   // ==========================================
-  // NIVEL 2: Los Diplomados de Iplacex y Cursos IT
+  // NIVEL 2: Certificaciones de EducacionIT
   // ==========================================
   {
-    id: 'cert-dip-bd',
-    title: 'Diplomado en Diseño y Programación de Bases de Datos',
-    issuer: 'Iplacex',
-    year: '2022',
-    imageUrl: '/assets/certs/dip-bd.jpg',
+    id: 'cert-mongodb',
+    title: 'MongoDB',
+    issuer: 'EducacionIT',
+    year: '2026',
     level: 2,
-    category: 'Backend / DB'
+    category: 'Base de Datos'
   },
   {
-    id: 'cert-dip-oop',
-    title: 'Diplomado en Programación Orientada a Objetos',
-    issuer: 'Iplacex',
-    year: '2022',
-    imageUrl: '/assets/certs/dip-oop.jpg',
-    level: 2,
-    category: 'Backend'
-  },
-  {
-    id: 'cert-dip-front',
-    title: 'Diplomado en Programación Front End',
-    issuer: 'Iplacex',
-    year: '2023',
-    imageUrl: '/assets/certs/dip-front.jpg',
+    id: 'cert-reactjsDeveloper',
+    title: 'React.JS Developer',
+    issuer: 'EducacionIT',
+    year: '2026',
     level: 2,
     category: 'Frontend'
   },
   {
-    id: 'cert-dip-web',
-    title: 'Diplomado en Programación Web',
-    issuer: 'Iplacex',
-    year: '2023',
-    imageUrl: '/assets/certs/dip-web.jpg',
-    level: 2,
-    category: 'Fullstack'
-  },
-  {
-    id: 'cert-dip-multi',
-    title: 'Diplomado en Programación Multiplataforma',
-    issuer: 'Iplacex',
-    year: '2023',
-    imageUrl: '/assets/certs/dip-multi.jpg',
-    level: 2,
-    category: 'Desarrollo Móvil'
-  },
-  {
-    id: 'cert-dip-avan',
-    title: 'Diplomado en Programación Avanzada',
-    issuer: 'Iplacex',
-    year: '2023',
-    imageUrl: '/assets/certs/dip-avanzada.jpg',
-    level: 2,
-    category: 'Backend'
-  },
-  {
-    id: 'cert-dip-ci',
-    title: 'Diplomado en Integración Continua',
-    issuer: 'Iplacex',
-    year: '2024',
-    imageUrl: '/assets/certs/dip-ci.jpg',
-    level: 2,
-    category: 'DevOps / CI-CD'
-  },
-  {
-    id: 'cert-python',
-    title: 'Introducción a Python',
+    id: 'cert-patronesDiseno',
+    title: 'Patrones de Diseño',
     issuer: 'EducacionIT',
     year: '2026',
-    imageUrl: '/assets/certs/python-eduit.jpg',
     level: 2,
-    category: 'Backend'
-  },
-
-  // ==========================================
-  // NIVEL 3: Otras áreas (Revelación progresiva)
-  // ==========================================
-  {
-    id: 'cert-premio-bicentenario',
-    title: 'Premio Bicentenario',
-    issuer: 'Liceo Bicentenario Jovina Naranjo Fernández',
-    year: '2021',
-    imageUrl: '/assets/certs/premio-bicentenario.jpg',
-    level: 3,
-    category: 'Reconocimiento General'
+    category: 'Arquitectura de Software'
   },
   {
-    id: 'cert-distincion-autonomia',
-    title: 'Distinción Destacada: Autonomía',
-    issuer: 'Liceo Bicentenario Jovina Naranjo Fernández',
-    year: '2017',
-    imageUrl: '/assets/certs/distincion-autonomia.jpg',
-    level: 3,
-    category: 'Reconocimiento General'
-  }
+    id: 'cert-git',
+    title: 'Git: Desarrollo Colaborativo',
+    issuer: 'EducacionIT',
+    year: '2026',
+    level: 2,
+    category: 'Herramientas'
+  },
+  {
+    id: 'cert-iaProgramadores',
+    title: 'IA aplicada al desarrollo - POO con IA - Inmersión IA en la práctica',
+    issuer: 'EducacionIT, Daxus',
+    year: '2026',
+    level: 2,
+    category: 'Inteligencia Artificial'
+  },
 ];

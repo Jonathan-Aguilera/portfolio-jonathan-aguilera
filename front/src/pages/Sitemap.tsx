@@ -1,0 +1,8 @@
+export default function Sitemap() {
+    return (
+        <section className="px-6 py-16 max-w-5xl mx-auto">
+            <h1 className="text-3xl font-bold text-white">Mapa del Sitio</h1>
+            <p className="text-slate-400 mt-4">Página del mapa del sitio en construcción.</p>
+        </section>
+    );
+}

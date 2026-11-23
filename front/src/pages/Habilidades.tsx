@@ -2,18 +2,51 @@ import SkillCard from '../components/SkillCard';
 import { skillsData } from '../data/skills';
 
 export default function Habilidades() {
+  // Separar los sectores técnicos de las competencias blandas
+  const technicalSkills = skillsData.filter(
+    (cat) => cat.sector !== 'soft-skills'
+  );
+  const softSkills = skillsData.filter(
+    (cat) => cat.sector === 'soft-skills'
+  );
+
   return (
-    <section id="skills" className="px-6 py-16 max-w-5xl mx-auto">
-      <div className="flex items-center gap-4 mb-10">
-        <h2 className="text-3xl font-bold text-white tracking-tight">Habilidades Técnicas y Blandas</h2>
-        <div className="h-px bg-gradient-to-r from-cyan-500/50 to-transparent flex-1" />
+    <section id="skills" className="px-6 lg:px-12 py-20 max-w-6xl mx-auto space-y-16">
+      
+      {/* ===================== SECCIÓN 1: HABILIDADES TÉCNICAS ===================== */}
+      <div>
+        <div className="flex items-center gap-4 mb-10">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            Habilidades Técnicas
+          </h2>
+          <div className="h-px bg-gradient-to-r from-cyan-500/50 to-transparent flex-1" />
+        </div>
+
+        {/* Grid de 3 columnas en desktop */}
+        <div className="grid gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
+          {technicalSkills.map((category) => (
+            <SkillCard key={category.sector} skillCategory={category} />
+          ))}
+        </div>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2">
-        {skillsData.map((category, index) => (
-          <SkillCard key={index} skillCategory={category} />
-        ))}
-      </div>
+      {/* ===================== SECCIÓN 2: COMPETENCIAS TRANSVERSALES ===================== */}
+      {softSkills.length > 0 && (
+        <div>
+          <div className="flex items-center gap-4 mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+              Competencias Transversales
+            </h2>
+            <div className="h-px bg-gradient-to-r from-amber-500/50 to-transparent flex-1" />
+          </div>
+
+          <div className="grid gap-6 grid-cols-1">
+            {softSkills.map((category) => (
+              <SkillCard key={category.sector} skillCategory={category} />
+            ))}
+          </div>
+        </div>
+      )}
     </section>
   );
 }

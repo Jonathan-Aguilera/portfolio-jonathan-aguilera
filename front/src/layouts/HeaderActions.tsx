@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
+import { Settings, Accessibility } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 type IconProps = { className?: string };
 
@@ -33,8 +35,8 @@ export default function HeaderActions() {
   const [darkMode, setDarkMode] = useState(true);
   const searchRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
 
-  // Cierra la búsqueda al hacer clic fuera
   useEffect(() => {
     if (!searchOpen) return;
     function onClickOutside(event: MouseEvent) {
@@ -46,13 +48,12 @@ export default function HeaderActions() {
     return () => document.removeEventListener('mousedown', onClickOutside);
   }, [searchOpen]);
 
-  // Enfoca el input al abrir
   useEffect(() => {
     if (searchOpen) inputRef.current?.focus();
   }, [searchOpen]);
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-4 sm:border-l sm:border-white/20 sm:pl-6">
       <div ref={searchRef} className="flex items-center">
         <button
           type="button"
@@ -86,6 +87,24 @@ export default function HeaderActions() {
         className="p-2 rounded-md text-white/90 hover:text-glint hover:bg-white/10 transition-colors"
       >
         {darkMode ? <SunIcon className="h-5 w-5" /> : <MoonIcon className="h-5 w-5" />}
+      </button>
+
+      <button
+        type="button"
+        aria-label="Configuración"
+        onClick={() => navigate('/configuracion')}
+        className="p-2 rounded-md text-white/90 hover:text-glint hover:bg-white/10 transition-colors"
+      >
+        <Settings className="h-5 w-5" />
+      </button>
+
+      <button
+        type="button"
+        aria-label="Accesibilidad"
+        onClick={() => navigate('/accesibilidad')}
+        className="p-2 rounded-md text-white/90 hover:text-glint hover:bg-white/10 transition-colors"
+      >
+        <Accessibility className="h-5 w-5" />
       </button>
     </div>
   );

@@ -1,10 +1,11 @@
 import Hero from '../sections/Hero'
 import SobreMi from './SobreMi'
 import Contacto from './Contacto'
-import ProyectosPreview from '../components/preview/ProyectosPreview'
-import ExperienciaPreview from '../components/preview/ExperienciaPreview'
-import FormacionPreview from '../components/preview/FormacionPreview'
-import HabilidadesPreview from '../components/preview/HabilidadesPreview'
+import ProyectosPreview from '../sections/preview/ProyectosPreview'
+import ExperienciaPreview from '../sections/preview/ExperienciaPreview'
+import FormacionPreview from '../sections/preview/FormacionPreview'
+import HabilidadesPreview from '../sections/preview/HabilidadesPreview'
+import NoticiasPreview from '../sections/preview/NoticiasPreview';
 
 
 import surfaceImage from '../assets/surface.webp'
@@ -27,11 +28,12 @@ export default function Home() {
 
       <div className="zone-upper-sea">
         <ProyectosPreview />
+        <NoticiasPreview />
         <ExperienciaPreview />
-        <FormacionPreview />
       </div>
 
       <div className="zone-deep-sea">
+        <FormacionPreview />
         <HabilidadesPreview />
         <Contacto />
       </div>

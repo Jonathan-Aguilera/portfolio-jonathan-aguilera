@@ -1,14 +1,4 @@
-export interface Experience {
-  id: string;
-  role: string;
-  company: string;
-  location: string;
-  date: string; // Formato: "Mes Año - Mes Año"
-  type: 'Fullstack' | 'Técnico' | 'Logística' | 'Atención al Público' | 'Práctica'; // Categorías para filtrar a futuro
-  description: string;
-  achievements: string[]; // Bullet points con impacto
-  technologies?: string[]; // Solo si aplica
-}
+import type { Experience } from '../types';
 
 export const experiencesData: Experience[] = [
   {

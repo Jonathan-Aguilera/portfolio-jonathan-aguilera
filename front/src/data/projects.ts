@@ -1,24 +1,4 @@
-export interface Project {
-  id: string;
-  title: string;
-  status: 'Lanzado' | 'En Desarrollo' | 'Local';
-  role: string;
-  shortDescription: string;
-  problem: string;
-  solution: string;
-  contribution: string[];
-  techStack: {
-    frontend: string[];
-    backend: string[];
-    database: string[];
-  };
-  links: {
-    enlace?: string;   // sitio en vivo
-    demo?: string;  // YouTube walkthrough
-    repo?: string;   // GitHub
-  };
-  images?: string[];
-}
+import type { Project } from '../types';
 
 export const reducArProject: Project = {
   id: 'reducar',
@@ -78,7 +58,7 @@ export const puntoCriticoProject: Project = {
   id: 'punto-critico',
   title: 'Punto Crítico',
   status: 'Lanzado', // O 'En Desarrollo' si prefieres, pero está deployado
-  role: 'Desarrollador Frontend y Especialista en Visualización',
+  role: 'Desarrollador Frontend y Especialista en Visualización (Co - Creador)',
   shortDescription: 'Visualización interactiva de datos abiertos sobre salud cardiovascular en Argentina. Un mapa 3D, filtros dinámicos y narrativas personales para explorar y comprender una problemática crítica de salud pública.',
   problem: 'La información sobre enfermedades cardiovasculares en Argentina está dispersa en múltiples bases de datos públicas y es difícil de interpretar para el público general. La falta de una narrativa visual y accesible impide comprender la magnitud real del problema y su evolución territorial y temporal.',
   solution: 'Una aplicación web frontend-only que combina un recorrido narrativo (test, historias, modelo 3D de corazón) con un mapa interactivo 3D de Argentina. Los usuarios pueden filtrar por provincia, año y tipo de enfermedad, y generar gráficos en tiempo real para descubrir patrones y disparidades regionales.',

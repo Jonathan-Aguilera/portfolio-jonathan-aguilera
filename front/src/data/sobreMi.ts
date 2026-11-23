@@ -1,14 +1,10 @@
-export interface AboutInfo {
-  id: string;
-  title: string;
-  description: string;
-}
+import type { AboutInfo } from '../types';
 
 export const aboutData: AboutInfo[] = [
   {
     id: 'presentacion',
     title: 'Presentación',
-    description: 'Soy Jonathan Aguilera, desarrollador de software con foco en backend. Construyo APIs y sistemas completos con Node, Express y Firebase, y resuelvo el frontend con React cuando el proyecto lo requiere. Trabajo con autonomía, cuido la seguridad desde el diseño y uso IA como herramienta para potenciar mi productividad.'
+    description: 'Soy Jonathan Aguilera, desarrollador de software con foco en backend. Construyo APIs y sistemas completos con Node, Express y PostgreSQL o Firebase, y resuelvo el frontend con React cuando el proyecto lo requiere. Trabajo con autonomía, cuido la seguridad desde el diseño y uso IA como herramienta para potenciar mi productividad.'
   },
   {
     id: 'filosofia',
