@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import NewsCard from '../../components/ui/NewsCard';
+import NewsCard from '../../components/NewsCard';
 import { newsPosts } from '../../data/news';
 
 const PREVIEW_LIMIT = 3;

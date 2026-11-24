@@ -1,4 +1,4 @@
-import NewsCard from '../components/ui/NewsCard';
+import NewsCard from '../components/NewsCard';
 import { newsPosts } from '../data/news';
 
 export default function Noticias() {
