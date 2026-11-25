@@ -1,5 +1,5 @@
 import Hero from '../sections/Hero'
-import SobreMi from './SobreMi'
+import SobreMiPreview from '../sections/preview/SobreMiPreview'
 import Contacto from './Contacto'
 import ProyectosPreview from '../sections/preview/ProyectosPreview'
 import ExperienciaPreview from '../sections/preview/ExperienciaPreview'
@@ -23,7 +23,7 @@ export default function Home() {
         }}
       >
         <Hero />
-        <SobreMi variant="preview" />
+        <SobreMiPreview />
       </div>
 
       <div className="zone-upper-sea">

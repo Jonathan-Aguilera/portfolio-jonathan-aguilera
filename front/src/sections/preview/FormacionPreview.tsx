@@ -1,9 +1,13 @@
+import { Link } from 'react-router-dom';
 import EducationCard from '../../components/EducationCard';
 import { certificatesData } from '../../data/education';
 import SectionPreview from './SectionPreview';
 
 export default function FormacionPreview() {
-  const topLevel = certificatesData.filter((cert) => cert.level === 1);
+  // Solo los de nivel 1 (los más importantes) y máximo 3
+  const topLevel = certificatesData
+    .filter((cert) => cert.level === 1)
+    .slice(0, 3);
 
   return (
     <SectionPreview
@@ -11,13 +15,19 @@ export default function FormacionPreview() {
       href="/formacion"
       ctaLabel="Ver toda la formación"
     >
-      <div className="grid gap-6 sm:grid-cols-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {topLevel.map((cert) => (
-          <EducationCard
+          <Link
             key={cert.id}
-            education={cert}
-            onViewImage={() => {}} // En preview no abrimos el modal
-          />
+            to="/formacion"
+            className="block group"
+          >
+            <EducationCard
+              education={cert}
+              onViewImage={() => {}} // No abrimos modal en el preview
+              className="h-full scale-[0.92] origin-top transition-transform duration-300 group-hover:scale-[0.95]"
+            />
+          </Link>
         ))}
       </div>
     </SectionPreview>

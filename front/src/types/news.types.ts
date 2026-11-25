@@ -7,5 +7,6 @@ export interface NewsPost {
   tags: string[];
   readTime?: number;
   coverImage?: string;
+  imagenes?: string[];
   author?: string;
 }
