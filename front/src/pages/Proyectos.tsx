@@ -58,10 +58,10 @@ export default function Proyectos() {
 
   return (
     <section id="projects" className="px-8 lg:px-12 py-20 max-w-6xl mx-auto">
-      <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.55)]">
+      <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-[#F0F4F8]">
         Proyectos
       </h2>
-      <p className="text-slate-300 text-lg mb-12 max-w-3xl leading-relaxed">
+      <p className="text-[#8BA4C0] text-lg mb-12 max-w-3xl leading-relaxed">
         Explora una selección de mis trabajos más recientes. Aquí encontrarás soluciones que van desde arquitecturas complejas y liderazgo técnico hasta visualizaciones de datos interactivas, siempre con el enfoque puesto en la escalabilidad y la experiencia del usuario.
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start">

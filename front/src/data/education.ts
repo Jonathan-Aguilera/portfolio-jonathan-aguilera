@@ -15,6 +15,18 @@ export const certificatesData: Certificate[] = [
     level: 1,
     category: 'Título Técnico'
   },
+  {
+    id: 'cert-capacitacion-iplacex',
+    title: 'Programación web Full Stack',
+    issuer: 'Fundación Pescar',
+    year: '2026',
+    imageUrl: '/certificates/pdf_certificado_pescar.webp',
+    level: 1,
+    category: 'Capacitación intensiva'
+  },
+
+
+  
 
   // ==========================================
   // NIVEL 2: Certificaciones de EducacionIT

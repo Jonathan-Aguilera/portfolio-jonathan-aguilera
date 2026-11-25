@@ -14,13 +14,13 @@ export default function NewsDetail() {
   if (!post) {
     return (
       <section className="px-6 py-16 max-w-3xl mx-auto">
-        <h1 className="text-3xl font-bold text-white mb-4">Noticia no encontrada</h1>
-        <p className="text-slate-300 mb-6">
+        <h1 className="text-3xl font-bold text-[#F0F4F8] mb-4">Noticia no encontrada</h1>
+        <p className="text-[#8BA4C0] mb-6">
           La publicación que buscas no existe o fue movida.
         </p>
         <Link
           to="/noticias"
-          className="text-glint hover:underline"
+          className="text-[#00D4FF] hover:text-[#3B82C4] transition-colors"
         >
           ← Volver a Noticias
         </Link>
@@ -34,16 +34,16 @@ export default function NewsDetail() {
 
       <Link
         to="/noticias"
-        className="text-sm text-slate-400 hover:text-glint transition-colors"
+        className="text-sm text-[#8BA4C0] hover:text-[#00D4FF] transition-colors"
       >
         ← Volver a Noticias
       </Link>
 
       <header className="mt-4 mb-8">
-        <h1 className="text-3xl sm:text-4xl font-bold text-white leading-tight mb-3">
+        <h1 className="text-3xl sm:text-4xl font-bold text-[#F0F4F8] leading-tight mb-3">
           {post.title}
         </h1>
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-slate-400">
+        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-[#8BA4C0]">
           <time dateTime={post.date}>{dateFormatter.format(new Date(post.date))}</time>
           {post.readTime && (
             <>
@@ -63,7 +63,7 @@ export default function NewsDetail() {
             {post.tags.map((tag) => (
               <li
                 key={tag}
-                className="text-xs px-2 py-0.5 rounded-full bg-white/10 text-slate-100/90 border border-white/10"
+                className="text-xs px-2 py-0.5 rounded-full bg-[#1E3A5F] text-[#F0F4F8] border border-[#3B82C4]/40"
               >
                 {tag}
               </li>
@@ -72,7 +72,7 @@ export default function NewsDetail() {
         )}
       </header>
 
-      <div className="text-slate-200 leading-relaxed whitespace-pre-line">
+      <div className="text-[#8BA4C0] leading-relaxed whitespace-pre-line">
         {post.content}
       </div>
     </article>

@@ -2,7 +2,6 @@ import SkillCard from '../components/SkillCard';
 import { skillsData } from '../data/skills';
 
 export default function Habilidades() {
-  // Separar los sectores técnicos de las competencias blandas
   const technicalSkills = skillsData.filter(
     (cat) => cat.sector !== 'soft-skills'
   );
@@ -16,13 +15,12 @@ export default function Habilidades() {
       {/* ===================== SECCIÓN 1: HABILIDADES TÉCNICAS ===================== */}
       <div>
         <div className="flex items-center gap-4 mb-10">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-bold text-[#F0F4F8] tracking-tight">
             Habilidades Técnicas
           </h2>
-          <div className="h-px bg-gradient-to-r from-cyan-500/50 to-transparent flex-1" />
+          <div className="h-px bg-gradient-to-r from-[#00D4FF]/50 to-transparent flex-1" />
         </div>
 
-        {/* Grid de 3 columnas en desktop */}
         <div className="grid gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
           {technicalSkills.map((category) => (
             <SkillCard key={category.sector} skillCategory={category} />
@@ -34,10 +32,10 @@ export default function Habilidades() {
       {softSkills.length > 0 && (
         <div>
           <div className="flex items-center gap-4 mb-10">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#F0F4F8] tracking-tight">
               Competencias Transversales
             </h2>
-            <div className="h-px bg-gradient-to-r from-amber-500/50 to-transparent flex-1" />
+            <div className="h-px bg-gradient-to-r from-[#00D4FF]/40 to-transparent flex-1" />
           </div>
 
           <div className="grid gap-6 grid-cols-1">

@@ -10,6 +10,7 @@ interface EducationCardProps {
 
 const categoryColors: Record<string, string> = {
   'Título Técnico': 'bg-[#00D4FF]/15 text-[#00D4FF] border-[#00D4FF]/40',
+  'Capacitación intensiva': 'bg-[#00D4FF]/15 text-[#00D4FF] border-[#00D4FF]/40',
   'Base de Datos': 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30',
   'Frontend': 'bg-sky-500/15 text-sky-300 border-sky-500/30',
   'Arquitectura de Software': 'bg-violet-500/15 text-violet-300 border-violet-500/30',

@@ -24,14 +24,12 @@ export default function Contacto() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulamos un retraso de red de 1 segundo para hacerlo realista
     setTimeout(() => {
       setIsSubmitting(false);
       alert(
         `📬 ¡Simulación de envío exitosa!\n\nEl formulario de contacto funciona correctamente.\n\nDatos recopilados:\n• Nombre: ${formData.nombre}\n• Email: ${formData.email}\n• Motivo: ${formData.asunto}\n• Mensaje: ${formData.mensaje}\n\n(En un entorno real, estos datos se enviarían a tu correo o servicio de mensajería API/MailTo)`
       );
 
-      // Reseteamos el formulario
       setFormData({
         nombre: "",
         email: "",
@@ -42,48 +40,48 @@ export default function Contacto() {
   };
 
   return (
-    <section id="contact" className="px-6 py-16 max-w-5xl mx-auto border-t border-slate-800">
+    <section id="contact" className="px-6 py-16 max-w-5xl mx-auto border-t border-[#3B82C4]/30">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* Columna de Información */}
         <div className="flex flex-col justify-between">
           <div>
-            <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+            <h2 className="text-3xl font-bold mb-4 text-[#F0F4F8]">
               Hablemos
             </h2>
-            <p className="text-slate-300 text-lg mb-6 leading-relaxed">
+            <p className="text-[#8BA4C0] text-lg mb-6 leading-relaxed">
               Estoy disponible para nuevas oportunidades profesionales, proyectos freelance o
               colaboraciones. Si tenés una propuesta o simplemente querés saludar, ¡completá el formulario!
             </p>
 
             <div className="space-y-4">
-              <div className="flex items-center gap-3 text-slate-300">
-                <span className="text-cyan-400 text-xl">📍</span>
+              <div className="flex items-center gap-3 text-[#8BA4C0]">
+                <span className="text-[#00D4FF] text-xl">📍</span>
                 <span>Buenos Aires, Argentina</span>
               </div>
-              <div className="flex items-center gap-3 text-slate-300">
-                <span className="text-cyan-400 text-xl">📧</span>
+              <div className="flex items-center gap-3 text-[#8BA4C0]">
+                <span className="text-[#00D4FF] text-xl">📧</span>
                 <span>jonathan.aguilera.dev@gmail.com</span>
               </div>
             </div>
           </div>
 
-          <div className="mt-8 pt-8 border-t border-slate-800 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+          <div className="mt-8 pt-8 border-t border-[#3B82C4]/30 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
             <div>
-              <p className="text-slate-400 mb-3">También podés encontrarme en:</p>
+              <p className="text-[#8BA4C0] mb-3">También podés encontrarme en:</p>
               <div className="flex gap-4">
                 <a
                   href="https://github.com/Jonathan-Aguilera"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-lg bg-slate-800/50 hover:bg-slate-800 text-cyan-400 hover:text-cyan-300 border border-slate-700 transition-all text-sm font-medium"
+                  className="px-4 py-2 rounded-lg bg-[#1E3A5F] hover:bg-[#3B82C4]/30 text-[#00D4FF] border border-[#3B82C4]/40 transition-all text-sm font-medium"
                 >
                   GitHub
                 </a>
                 <a
-                  href="https://linkedin.com" // Reemplaza o simula con el link real si lo tenés
+                  href="https://linkedin.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-lg bg-slate-800/50 hover:bg-slate-800 text-cyan-400 hover:text-cyan-300 border border-slate-700 transition-all text-sm font-medium"
+                  className="px-4 py-2 rounded-lg bg-[#1E3A5F] hover:bg-[#3B82C4]/30 text-[#00D4FF] border border-[#3B82C4]/40 transition-all text-sm font-medium"
                 >
                   LinkedIn
                 </a>
@@ -91,14 +89,14 @@ export default function Contacto() {
             </div>
 
             <div>
-              <p className="text-slate-400 mb-3">¿Querés ver mi CV?</p>
+              <p className="text-[#8BA4C0] mb-3">¿Querés ver mi CV?</p>
               <button
                 type="button"
                 onClick={(e) => {
                   e.preventDefault();
                   alert("📄 Simulación: Aquí se descargará mi CV en formato PDF.");
                 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 text-cyan-400 hover:text-cyan-300 border border-cyan-500/30 hover:border-cyan-500/50 transition-all text-sm font-semibold"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#00D4FF]/10 hover:bg-[#00D4FF]/20 text-[#00D4FF] border border-[#00D4FF]/30 hover:border-[#00D4FF]/50 transition-all text-sm font-semibold"
               >
                 <span>📥</span> Descargar CV
               </button>
@@ -107,10 +105,10 @@ export default function Contacto() {
         </div>
 
         {/* Columna del Formulario */}
-        <div className="bg-slate-900/40 p-6 md:p-8 rounded-2xl border border-slate-800 backdrop-blur-sm">
+        <div className="bg-[#1E3A5F] p-6 md:p-8 rounded-2xl border border-[#3B82C4]/40">
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label htmlFor="nombre" className="block text-sm font-medium text-slate-300 mb-2">
+              <label htmlFor="nombre" className="block text-sm font-medium text-[#F0F4F8] mb-2">
                 Nombre Completo
               </label>
               <input
@@ -121,12 +119,12 @@ export default function Contacto() {
                 value={formData.nombre}
                 onChange={handleChange}
                 placeholder="Juan Pérez"
-                className="w-full px-4 py-2.5 rounded-lg bg-slate-950/60 border border-slate-800 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all"
+                className="w-full px-4 py-2.5 rounded-lg bg-[#0A1628]/60 border border-[#3B82C4]/40 text-[#F0F4F8] placeholder-[#8BA4C0] focus:outline-none focus:border-[#00D4FF] focus:ring-1 focus:ring-[#00D4FF] transition-all"
               />
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-[#F0F4F8] mb-2">
                 Correo Electrónico
               </label>
               <input
@@ -137,12 +135,12 @@ export default function Contacto() {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="juan@ejemplo.com"
-                className="w-full px-4 py-2.5 rounded-lg bg-slate-950/60 border border-slate-800 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all"
+                className="w-full px-4 py-2.5 rounded-lg bg-[#0A1628]/60 border border-[#3B82C4]/40 text-[#F0F4F8] placeholder-[#8BA4C0] focus:outline-none focus:border-[#00D4FF] focus:ring-1 focus:ring-[#00D4FF] transition-all"
               />
             </div>
 
             <div>
-              <label htmlFor="asunto" className="block text-sm font-medium text-slate-300 mb-2">
+              <label htmlFor="asunto" className="block text-sm font-medium text-[#F0F4F8] mb-2">
                 Motivo del Contacto
               </label>
               <select
@@ -150,7 +148,7 @@ export default function Contacto() {
                 name="asunto"
                 value={formData.asunto}
                 onChange={handleChange}
-                className="w-full px-4 py-2.5 rounded-lg bg-slate-950/60 border border-slate-800 text-slate-100 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all cursor-pointer"
+                className="w-full px-4 py-2.5 rounded-lg bg-[#0A1628]/60 border border-[#3B82C4]/40 text-[#F0F4F8] focus:outline-none focus:border-[#00D4FF] focus:ring-1 focus:ring-[#00D4FF] transition-all cursor-pointer"
               >
                 <option value="Oportunidad Laboral">Oportunidad Laboral (Propuesta)</option>
                 <option value="Proyecto Freelance">Proyecto Freelance / Colaboración</option>
@@ -161,7 +159,7 @@ export default function Contacto() {
             </div>
 
             <div>
-              <label htmlFor="mensaje" className="block text-sm font-medium text-slate-300 mb-2">
+              <label htmlFor="mensaje" className="block text-sm font-medium text-[#F0F4F8] mb-2">
                 Mensaje
               </label>
               <textarea
@@ -172,14 +170,14 @@ export default function Contacto() {
                 value={formData.mensaje}
                 onChange={handleChange}
                 placeholder="Escribe tu mensaje aquí..."
-                className="w-full px-4 py-2.5 rounded-lg bg-slate-950/60 border border-slate-800 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all resize-none"
+                className="w-full px-4 py-2.5 rounded-lg bg-[#0A1628]/60 border border-[#3B82C4]/40 text-[#F0F4F8] placeholder-[#8BA4C0] focus:outline-none focus:border-[#00D4FF] focus:ring-1 focus:ring-[#00D4FF] transition-all resize-none"
               />
             </div>
 
             <button
               type="submit"
               disabled={isSubmitting}
-              className={`w-full py-3 px-4 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-cyan-400 focus:ring-offset-2 focus:ring-offset-slate-900 ${
+              className={`w-full py-3 px-4 rounded-lg bg-[#00D4FF] hover:bg-[#3B82C4] text-[#0A1628] font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#00D4FF] focus:ring-offset-2 focus:ring-offset-[#1E3A5F] ${
                 isSubmitting ? "opacity-75 cursor-not-allowed" : ""
               }`}
             >
