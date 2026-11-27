@@ -12,11 +12,11 @@ export default function SectionPreview({ title, href, ctaLabel, children }: Sect
   return (
     <section className="px-6 py-16 max-w-5xl mx-auto">
       <div className="flex items-center gap-4 mb-8">
-        <h2 className="text-3xl font-bold text-white tracking-tight">{title}</h2>
-        <div className="h-px bg-gradient-to-r from-cyan-500/50 to-transparent flex-1" />
+        <h2 className="text-3xl font-bold text-ocean-text tracking-tight">{title}</h2>
+        <div className="h-px bg-gradient-to-r from-ocean-glint/50 to-transparent flex-1" />
         <Link
           to={href}
-          className="text-sm font-medium text-cyan-300 hover:text-cyan-200 transition-colors whitespace-nowrap"
+          className="text-sm font-medium text-ocean-glint hover:text-ocean-glint/80 transition-colors whitespace-nowrap"
         >
           {ctaLabel} <span aria-hidden="true">→</span>
         </Link>

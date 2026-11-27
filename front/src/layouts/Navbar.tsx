@@ -41,7 +41,7 @@ export default function Navbar() {
           </button>
 
           <div className="absolute left-0 top-full pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-            <div className="w-48 bg-theme-card backdrop-blur-md border border-theme-border rounded-xl shadow-2xl flex flex-col overflow-hidden">
+            <div className="w-48 bg-theme-card-solid border border-theme-border rounded-xl shadow-2xl flex flex-col overflow-hidden">
               <NavLink to="/sobre-mi" className={dropdownItemClasses}>Mi Historia</NavLink>
               <NavLink to="/experiencia" className={dropdownItemClasses}>Experiencia</NavLink>
               <NavLink to="/formacion" className={dropdownItemClasses}>Formación</NavLink>
@@ -88,7 +88,7 @@ export default function Navbar() {
 
       {/* ================= MENÚ MÓVIL ================= */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden fixed top-[var(--header-h,64px)] left-0 right-0 bg-theme-card backdrop-blur-xl border-t border-theme-border shadow-2xl flex flex-col py-4 px-6 gap-4 z-40 transition-colors duration-300">
+        <div className="lg:hidden fixed top-[var(--header-h,64px)] left-0 right-0 bg-theme-card-solid border-t border-theme-border shadow-2xl flex flex-col py-4 px-6 gap-4 z-40 transition-colors duration-300">
           <NavLink
             to="/proyectos"
             onClick={() => setIsMobileMenuOpen(false)}

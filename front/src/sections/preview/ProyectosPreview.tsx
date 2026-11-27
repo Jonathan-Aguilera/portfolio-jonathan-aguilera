@@ -20,12 +20,11 @@ const getStatusBadgeClass = (status: string) => {
     case 'En Desarrollo':
       return 'bg-amber-500/20 text-amber-300 border-amber-500/30';
     default:
-      return 'bg-[#00D4FF]/20 text-[#00D4FF] border-[#00D4FF]/30';
+      return 'bg-glint/20 text-glint border-glint/30';
   }
 };
 
 export default function ProyectosPreview() {
-  // Priorizar "Lanzado", luego completar con "En Desarrollo"
   const launched = projectsData.filter((p) => p.status === 'Lanzado');
   const inProgress = projectsData.filter((p) => p.status === 'En Desarrollo');
   const previewProjects: Project[] = [...launched, ...inProgress].slice(0, 3);
@@ -37,21 +36,18 @@ export default function ProyectosPreview() {
           <Link
             key={project.id}
             to="/proyectos"
-            className="group relative flex flex-col min-h-[320px] bg-[#1E3A5F] border border-[#3B82C4]/40 rounded-xl shadow-xl shadow-black/20 overflow-hidden transition-all duration-300 hover:border-[#3B82C4] hover:translate-y-[-4px]"
+            className="group relative flex flex-col min-h-[320px] bg-ocean-card border border-ocean-border rounded-xl shadow-xl shadow-black/20 overflow-hidden transition-all duration-300 hover:border-ocean-border-hover hover:translate-y-[-4px]"
           >
-            {/* Imagen de fondo + overlay (igual que ProjectsCard) */}
             <div className="absolute inset-0 z-0 pointer-events-none">
               <img
                 src={getProjectBg(project.id)}
                 alt=""
                 className="w-full h-full object-cover opacity-20 grayscale brightness-90 transition-all duration-700 group-hover:opacity-30 group-hover:scale-105 group-hover:grayscale-0"
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-[#0A1628]/50 via-[#0A1628]/70 to-[#0A1628]/95" />
+              <div className="absolute inset-0 bg-gradient-to-b from-abyss-deep/50 via-abyss-deep/70 to-abyss-deep/95" />
             </div>
 
-            {/* Contenido */}
             <div className="relative z-10 flex flex-col h-full p-5">
-              {/* Header: status + título + flecha */}
               <div className="flex items-start justify-between gap-3 mb-2">
                 <div className="flex flex-col gap-1.5 min-w-0">
                   <span
@@ -59,32 +55,29 @@ export default function ProyectosPreview() {
                   >
                     {project.status}
                   </span>
-                  <h3 className="text-xl font-bold text-[#F0F4F8] tracking-wide leading-tight group-hover:text-[#00D4FF] transition-colors">
+                  <h3 className="text-xl font-bold text-ocean-text tracking-wide leading-tight group-hover:text-glint transition-colors">
                     {project.title}
                   </h3>
                 </div>
-                <ArrowRight className="h-5 w-5 text-[#8BA4C0] group-hover:text-[#00D4FF] group-hover:translate-x-1 transition-all shrink-0 mt-1" />
+                <ArrowRight className="h-5 w-5 text-ocean-muted group-hover:text-glint group-hover:translate-x-1 transition-all shrink-0 mt-1" />
               </div>
 
-              {/* Rol */}
-              <p className="text-[11px] font-semibold text-[#00D4FF] uppercase tracking-wider mb-3">
+              <p className="text-[11px] font-semibold text-glint uppercase tracking-wider mb-3">
                 {project.role}
               </p>
 
-              {/* shortDescription */}
-              <p className="text-[#8BA4C0] text-sm leading-relaxed font-medium line-clamp-3 mb-4">
+              <p className="text-ocean-muted text-sm leading-relaxed font-medium line-clamp-3 mb-4">
                 {project.shortDescription}
               </p>
 
-              {/* Contribution (expuesto directamente) */}
               {project.contribution && project.contribution.length > 0 && (
                 <ul className="mt-auto space-y-2">
                   {project.contribution.slice(0, 2).map((item) => (
                     <li
                       key={item}
-                      className="flex items-start gap-2 text-xs text-[#8BA4C0] leading-snug"
+                      className="flex items-start gap-2 text-xs text-ocean-muted leading-snug"
                     >
-                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-[#00D4FF] shrink-0" />
+                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-glint shrink-0" />
                       <span className="line-clamp-2">{item}</span>
                     </li>
                   ))}

@@ -1,29 +1,73 @@
 @import "tailwindcss";
 
-/* 1. Modo Claro */
+/* ═══════════════════════════════════════════════════════════
+   1. TOKENS BASE — MODO CLARO (DÍA)
+   ═══════════════════════════════════════════════════════════ */
 :root {
+  /* Theme base */
   --theme-bg: #B3D4E8;
   --theme-text: #0A1F33;
   --theme-text-muted: #2C4B6B;
   --theme-card: #CDE2F0;
   --theme-card-hover: #DCEAF5;
+  --theme-card-solid: #CDE2F0;
   --theme-border: #90B7D3;
   --theme-header: rgba(179, 212, 232, 0.85);
+
+  /* ─── HOME: Océano (día) ─── */
+  /* Agua de día: superficie luminosa, profundidad todavía azul */
+  --ocean-upper-1: #5BA3D0;
+  /* mar alto — superficie */
+  --ocean-upper-2: #3A7BAE;
+  /* mar alto — media agua */
+  --ocean-upper-3: #255A88;
+  /* mar alto — fondo (transición) */
+  
+  --ocean-deep-1: #255A88;
+  /* profundidad — inicio (idéntico) */
+  --ocean-deep-2: #163D60;
+  /* profundidad — media */
+  --ocean-deep-3: #0A2440;
+  /* profundidad — abismo */
+
+  /* Cards flotantes (fijas, legibles sobre cualquier océano) */
+  --ocean-card: #1E3A5F;
+  --ocean-text: #F0F4F8;
+  --ocean-muted: #8BA4C0;
+  --ocean-border: rgba(59, 130, 196, 0.4);
+  --ocean-border-hover: rgba(59, 130, 196, 0.7);
+  --ocean-glint: #4FB3FF; 
 }
 
-/* 2. Modo Oscuro */
+/* ═══════════════════════════════════════════════════════════
+   2. TOKENS — MODO OSCURO (NOCHE)
+   ═══════════════════════════════════════════════════════════ */
 .dark {
+  /* Theme base */
   --theme-bg: #09121E;
   --theme-text: #F0F4F8;
   --theme-text-muted: #8BA4C0;
   --theme-card: rgba(26, 73, 126, 0.25);
   --theme-card-hover: rgba(26, 73, 126, 0.45);
+  --theme-card-solid: #0F2A4A;
   --theme-border: rgba(59, 130, 196, 0.2);
   --theme-header: rgba(9, 18, 30, 0.85);
+
+  /* ─── HOME: Océano (noche) ─── */
+  /* Agua de noche: todo más oscuro, pero mantiene el descenso */
+  --ocean-upper-1: #1A3F5E;
+  --ocean-upper-2: #122E48;
+  --ocean-upper-3: #0A1F35;
+  --ocean-deep-1: #0A1F35;
+  --ocean-deep-2: #051020;
+  --ocean-deep-3: #020810;
 }
 
-/* 3. Mapeo a Tailwind v4 */
+/* ═══════════════════════════════════════════════════════════
+   3. MAPEO A TAILWIND V4
+   ═══════════════════════════════════════════════════════════ */
 @theme {
+  /* Paleta de marca / océano legacy (por si se usa en otros lados) */
   --color-sky-deep: #0F2A4A;
   --color-sky-mid: #2C6AA6;
   --color-sky-light: #5FA8E8;
@@ -35,28 +79,38 @@
   --color-abyss-top: #1A497E;
   --color-abyss-mid: #1B2F47;
   --color-abyss-deep: #09121E;
-  --color-glint: #3B98FF;
+  --color-glint: #1D6DC4;
 
+  /* Theme base */
   --color-theme-bg: var(--theme-bg);
   --color-theme-text: var(--theme-text);
   --color-theme-muted: var(--theme-text-muted);
   --color-theme-card: var(--theme-card);
   --color-theme-card-hover: var(--theme-card-hover);
+  --color-theme-card-solid: var(--theme-card-solid);
   --color-theme-border: var(--theme-border);
   --color-theme-header: var(--theme-header);
+
+  /* Home: cards flotantes sobre el océano */
+  --color-ocean-card: var(--ocean-card);
+  --color-ocean-text: var(--ocean-text);
+  --color-ocean-muted: var(--ocean-muted);
+  --color-ocean-border: var(--ocean-border);
+  --color-ocean-border-hover: var(--ocean-border-hover);
+  
 }
 
-/* 4. Fondos y Base */
+/* ═══════════════════════════════════════════════════════════
+   4. BASE
+   ═══════════════════════════════════════════════════════════ */
 @layer base {
-  /* IMPORTANTE: El fondo base debe estar en el HTML para que View Transitions lo capture */
   html {
     background-color: var(--theme-bg);
   }
 
   body {
     color: var(--theme-text);
-    /* Se ELIMINÓ la transición del body porque View Transitions hace el trabajo */
-    background: linear-gradient(135deg, #B3D4E8 0%, #9BC4DE 50%, #7FB3D5 100%);
+    background: linear-gradient(135deg, #4789A6 0%, #9BC4DE 50%, #4789A6 100%);
     background-attachment: fixed;
   }
 
@@ -65,34 +119,103 @@
   }
 }
 
-/* 5. Zonas del océano */
+/* ═══════════════════════════════════════════════════════════
+   5. HOME — ZONAS DEL OCÉANO (día/noche)
+   ═══════════════════════════════════════════════════════════ */
 @layer components {
-  .zone-surface { background: var(--color-sky-light); }
-  .zone-upper-sea { background: linear-gradient(to bottom, var(--color-sea-top) 0%, var(--color-sea-mid) 45%, var(--color-sea-deep) 100%); }
-  .zone-deep-sea { background: linear-gradient(to bottom, var(--color-abyss-top) 0%, var(--color-abyss-mid) 55%, var(--color-abyss-deep) 100%); }
+
+  /* Superficie: la imagen la pone Home.tsx por inline style.
+     Este color solo es fallback si la imagen falla. */
+  .zone-surface {
+    background-color: var(--ocean-upper-1);
+  }
+
+  .zone-upper-sea {
+    background: linear-gradient(to bottom,
+        var(--ocean-upper-1) 0%,
+        var(--ocean-upper-2) 45%,
+        var(--ocean-upper-3) 100%);
+  }
+
+  .zone-deep-sea {
+    background: linear-gradient(to bottom,
+        var(--ocean-deep-1) 0%,
+        var(--ocean-deep-2) 55%,
+        var(--ocean-deep-3) 100%);
+  }
 }
 
-/* 6. Modales y Animaciones */
-@keyframes modal-fade-in { from { opacity: 0; } to { opacity: 1; } }
-@keyframes modal-fade-out { from { opacity: 1; } to { opacity: 0; } }
-@keyframes modal-zoom-in { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
-@keyframes modal-zoom-out { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(0.96); } }
-.modal-overlay { animation: modal-fade-in 200ms ease-out; }
-.modal-overlay.closing { animation: modal-fade-out 200ms ease-in forwards; }
-.modal-content { animation: modal-zoom-in 250ms cubic-bezier(0.16, 1, 0.3, 1); }
-.modal-content.closing { animation: modal-zoom-out 200ms ease-in forwards; }
+/* ═══════════════════════════════════════════════════════════
+   6. MODALES Y ANIMACIONES
+   ═══════════════════════════════════════════════════════════ */
+@keyframes modal-fade-in {
+  from {
+    opacity: 0;
+  }
 
-/* =========================================
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes modal-zoom-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes modal-zoom-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+.modal-overlay {
+  animation: modal-fade-in 200ms ease-out;
+}
+
+.modal-overlay.closing {
+  animation: modal-fade-out 200ms ease-in forwards;
+}
+
+.modal-content {
+  animation: modal-zoom-in 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-content.closing {
+  animation: modal-zoom-out 200ms ease-in forwards;
+}
+
+/* ═══════════════════════════════════════════════════════════
    7. ANIMACIÓN DE CAMBIO DE TEMA (OLA)
-   ========================================= */
-
-/* El tema viejo se queda estático */
+   ═══════════════════════════════════════════════════════════ */
 ::view-transition-old(root) {
   animation: none;
   mix-blend-mode: normal;
 }
 
-/* El tema nuevo se expande */
 ::view-transition-new(root) {
   animation: reveal-theme 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   mix-blend-mode: normal;
@@ -102,16 +225,21 @@
   from {
     clip-path: circle(0px at var(--click-x, 50%) var(--click-y, 50%));
   }
+
   to {
     clip-path: circle(var(--click-radius, 150vmax) at var(--click-x, 50%) var(--click-y, 50%));
   }
 }
 
-/* Respetar la preferencia de movimiento reducido */
 @media (prefers-reduced-motion: reduce) {
-  .modal-overlay, .modal-content, .modal-overlay.closing, .modal-content.closing {
+
+  .modal-overlay,
+  .modal-content,
+  .modal-overlay.closing,
+  .modal-content.closing {
     animation-duration: 0.01ms !important;
   }
+
   ::view-transition-new(root) {
     animation-duration: 0.01ms !important;
   }

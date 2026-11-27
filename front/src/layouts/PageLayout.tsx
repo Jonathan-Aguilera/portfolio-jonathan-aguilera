@@ -19,7 +19,6 @@ export default function PageLayout() {
   }, []);
 
   return (
-    /* Quitamos el bg-theme-bg para que el body muestre su degradado */
     <div className="flex flex-col min-h-screen text-theme-text transition-colors duration-300">
       <Header ref={headerRef} />
       <main className="flex-grow pt-[var(--header-h)]">

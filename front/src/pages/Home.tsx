@@ -35,7 +35,7 @@ export default function Home() {
       <div className="zone-deep-sea">
         <FormacionPreview />
         <HabilidadesPreview />
-        <Contacto />
+        <Contacto variant="ocean" />
       </div>
     </div>
   )

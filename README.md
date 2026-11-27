@@ -3,10 +3,10 @@
 <div align="center">
 
 ![Badge Status](https://img.shields.io/badge/Status-En%20Desarrollo-brightgreen)
-![React](https://img.shields.io/badge/React-19.x-blue?logo=react)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?logo=typescript)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.x-38BDF8?logo=tailwind-css)
-![Vite](https://img.shields.io/badge/Vite-6.x-646CFF?logo=vite)
+![React](https://img.shields.io/badge/React-19.3-blue?logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-6.0-blue?logo=typescript)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.3-38BDF8?logo=tailwind-css)
+![Vite](https://img.shields.io/badge/Vite-8.3-646CFF?logo=vite)
 
 </div>
 
@@ -31,13 +31,17 @@ Sitio web personal y portafolio profesional de **Jonathan Aguilera**, diseñado 
 
 ## 🛠️ Stack Tecnológico
 
-El proyecto está construido bajo una arquitectura frontend limpia y modular:
+El proyecto está construido bajo una arquitectura frontend limpia y modular utilizando las últimas tecnologías con versiones específicas:
 
-- **Core:** React, TypeScript
-- **Bundler & Build Tool:** Vite
-- **Estilos:** Tailwind CSS v4
-- **Enrutamiento:** React Router DOM
-- **Control de Calidad:** ESLint / Oxlint
+| Tecnología / Librería | Versión | Descripción |
+| :--- | :--- | :--- |
+| **React** | `19.3.1` | Biblioteca para construir interfaces de usuario |
+| **TypeScript** | `6.0.3` | Lenguaje de tipado estático para robustez en el código |
+| **Vite** | `8.3.4` | Entorno de desarrollo y empaquetador ultrarrápido |
+| **Tailwind CSS** | `4.3.3` | Framework CSS v4 centrado en utilidades |
+| **React Router DOM** | `7.18.5` | Enrutamiento declarativo y SPA |
+| **Lucide React** | `1.77.0` | Iconos optimizados |
+| **Oxlint** | `1.88.0` | Linter de alto rendimiento en Rust |
 
 ---
 
