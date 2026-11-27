@@ -15,35 +15,31 @@
   --theme-header: rgba(179, 212, 232, 0.85);
 
   /* ─── HOME: Océano (día) ─── */
-  /* Agua de día: superficie luminosa, profundidad todavía azul */
-  --ocean-upper-1: #5BA3D0;
-  /* mar alto — superficie */
-  --ocean-upper-2: #3A7BAE;
-  /* mar alto — media agua */
-  --ocean-upper-3: #255A88;
-  /* mar alto — fondo (transición) */
-  
-  --ocean-deep-1: #255A88;
-  /* profundidad — inicio (idéntico) */
-  --ocean-deep-2: #163D60;
-  /* profundidad — media */
-  --ocean-deep-3: #0A2440;
-  /* profundidad — abismo */
+  /* Colores actualizados según la imagen provista */
+  --ocean-upper-1: #005A6A;
+  --ocean-upper-2: #005A6A;
+  --ocean-upper-3: #00364E;
+  --ocean-deep-1: #012A45;
+  --ocean-deep-2: #01213D;
+  --ocean-deep-3: #010D1A;
 
-  /* Cards flotantes (fijas, legibles sobre cualquier océano) */
+  /* Efecto de luz circular (viñeta) */
+  --ocean-vignette-highlight: rgba(255, 255, 255, 0.05);
+  --ocean-vignette-shadow: rgba(0, 6, 18, 0.28);
+
+  /* Cards flotantes */
   --ocean-card: #1E3A5F;
   --ocean-text: #F0F4F8;
   --ocean-muted: #8BA4C0;
   --ocean-border: rgba(59, 130, 196, 0.4);
   --ocean-border-hover: rgba(59, 130, 196, 0.7);
-  --ocean-glint: #4FB3FF; 
+  --ocean-glint: #4FB3FF;
 }
 
 /* ═══════════════════════════════════════════════════════════
    2. TOKENS — MODO OSCURO (NOCHE)
    ═══════════════════════════════════════════════════════════ */
 .dark {
-  /* Theme base */
   --theme-bg: #09121E;
   --theme-text: #F0F4F8;
   --theme-text-muted: #8BA4C0;
@@ -54,13 +50,16 @@
   --theme-header: rgba(9, 18, 30, 0.85);
 
   /* ─── HOME: Océano (noche) ─── */
-  /* Agua de noche: todo más oscuro, pero mantiene el descenso */
   --ocean-upper-1: #1A3F5E;
   --ocean-upper-2: #122E48;
   --ocean-upper-3: #0A1F35;
   --ocean-deep-1: #0A1F35;
   --ocean-deep-2: #051020;
   --ocean-deep-3: #020810;
+
+  /* Viñeta más profunda de noche */
+  --ocean-vignette-highlight: rgba(255, 255, 255, 0.02);
+  --ocean-vignette-shadow: rgba(0, 0, 0, 0.45);
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -97,7 +96,7 @@
   --color-ocean-muted: var(--ocean-muted);
   --color-ocean-border: var(--ocean-border);
   --color-ocean-border-hover: var(--ocean-border-hover);
-  
+
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -124,24 +123,72 @@
    ═══════════════════════════════════════════════════════════ */
 @layer components {
 
-  /* Superficie: la imagen la pone Home.tsx por inline style.
-     Este color solo es fallback si la imagen falla. */
+  /* Superficie: la imagen la pone Home.tsx via CSS vars.
+     - Modo claro: --surface-img-day (día)
+     - Modo oscuro: --surface-img-night (noche)
+     - Fallback (si falta la var): el primer color del océano. */
   .zone-surface {
     background-color: var(--ocean-upper-1);
+    background-image: var(--surface-img-day, none);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
+  .dark .zone-surface {
+    background-image: var(--surface-img-night, none);
+  }
+
+
+  /* Mar alto: transición continua entre los tonos cercanos.
+     upper-1 === upper-2 → la franja superior es plana (cerca de la superficie).
+     upper-2 → upper-3 hace el descenso hacia la profundidad. */
   .zone-upper-sea {
     background: linear-gradient(to bottom,
         var(--ocean-upper-1) 0%,
-        var(--ocean-upper-2) 45%,
+        var(--ocean-upper-2) 40%,
         var(--ocean-upper-3) 100%);
   }
 
+  /* Profundidad: arranca exactamente con el color final de upper-sea
+     → costura invisible, sin sombra de unión. */
   .zone-deep-sea {
     background: linear-gradient(to bottom,
-        var(--ocean-deep-1) 0%,
+        var(--ocean-upper-3) 0%,
+        var(--ocean-deep-1) 10%,
         var(--ocean-deep-2) 55%,
         var(--ocean-deep-3) 100%);
+  }
+
+  /* ─── Efecto de luz circular (U extendida) ─── */
+  /* Un único gradiente sobre TODO el océano, no por trozos.
+     Centro del "mar" iluminado, bordes laterales en sombra,
+     y todo se desvanece suavemente hacia el abismo (mask). */
+  .ocean-vignette-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 5;
+    background:
+      /* Glow central: apenas ilumina el centro (U de luz) */
+      radial-gradient(ellipse 60% 45% at 50% 8%,
+        var(--ocean-vignette-highlight) 0%,
+        transparent 100%),
+      /* Sombra lateral: oscurece los bordes del agua */
+      radial-gradient(ellipse 130% 110% at 50% 0%,
+        transparent 30%,
+        var(--ocean-vignette-shadow) 100%);
+    /* La U se desvanece al bajar (nada de sombra en el abismo ni en el footer) */
+    mask-image: linear-gradient(to bottom,
+        black 0%,
+        black 55%,
+        rgba(0, 0, 0, 0.4) 80%,
+        transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom,
+        black 0%,
+        black 55%,
+        rgba(0, 0, 0, 0.4) 80%,
+        transparent 100%);
   }
 }
 
