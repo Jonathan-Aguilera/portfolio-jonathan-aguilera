@@ -9,8 +9,8 @@ interface EducationCardProps {
 }
 
 const categoryColors: Record<string, string> = {
-  'Título Técnico': 'bg-[#00D4FF]/15 text-[#00D4FF] border-[#00D4FF]/40',
-  'Capacitación intensiva': 'bg-[#00D4FF]/15 text-[#00D4FF] border-[#00D4FF]/40',
+  'Título Técnico': 'bg-glint/15 text-glint border-glint/40',
+  'Capacitación intensiva': 'bg-glint/15 text-glint border-glint/40',
   'Base de Datos': 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30',
   'Frontend': 'bg-sky-500/15 text-sky-300 border-sky-500/30',
   'Arquitectura de Software': 'bg-violet-500/15 text-violet-300 border-violet-500/30',
@@ -29,19 +29,19 @@ export default function EducationCard({ education, onViewImage, className = '' }
     switch (level) {
       case 1:
         return {
-          border: 'border-[#3B82C4]/60 shadow-[0_0_15px_rgba(0,212,255,0.12)]',
+          border: 'border-glint/40 shadow-[0_0_15px_rgba(59,152,255,0.12)]',
           badgeExtra: 'font-bold',
           icon: <Award className="w-3.5 h-3.5" />,
         };
       case 2:
         return {
-          border: 'border-[#3B82C4]/30 hover:border-[#3B82C4]/60',
+          border: 'border-theme-border hover:border-glint/50',
           badgeExtra: '',
           icon: null,
         };
       default:
         return {
-          border: 'border-[#3B82C4]/20 opacity-80 hover:opacity-100',
+          border: 'border-theme-border opacity-80 hover:opacity-100',
           badgeExtra: '',
           icon: null,
         };
@@ -49,13 +49,13 @@ export default function EducationCard({ education, onViewImage, className = '' }
   };
 
   const config = getLevelConfig(education.level);
-  const categoryStyle = categoryColors[education.category] || 'bg-[#0A1628]/50 text-[#8BA4C0] border-[#3B82C4]/30';
+  const categoryStyle = categoryColors[education.category] || 'bg-theme-bg/50 text-theme-muted border-theme-border';
 
   // ========== LEVEL 2: Card compacta (sin zona de imagen) ==========
   if (!isLevel1) {
     return (
       <article
-        className={`group flex flex-col bg-[#1E3A5F] border rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:border-[#3B82C4] ${config.border} ${className}`}
+        className={`group flex flex-col bg-theme-card backdrop-blur-md border rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/10 ${config.border} ${className}`}
       >
         <div className="p-4 flex flex-col flex-1 gap-3">
           {/* Badge de categoría */}
@@ -66,26 +66,26 @@ export default function EducationCard({ education, onViewImage, className = '' }
               {config.icon}
               {education.category}
             </span>
-            <span className="text-[10px] font-mono text-[#8BA4C0]">{education.year}</span>
+            <span className="text-[10px] font-mono text-theme-muted">{education.year}</span>
           </div>
 
           <div>
             <h3
-              className="text-sm font-bold text-[#F0F4F8] leading-snug mb-1 line-clamp-2"
+              className="text-sm font-bold text-theme-text leading-snug mb-1 line-clamp-2"
               title={education.title}
             >
               {education.title}
             </h3>
-            <p className="text-xs text-[#8BA4C0]">{education.issuer}</p>
+            <p className="text-xs text-theme-muted">{education.issuer}</p>
           </div>
 
           {education.credentialUrl && (
-            <div className="mt-auto pt-3 border-t border-[#3B82C4]/25">
+            <div className="mt-auto pt-3 border-t border-theme-border">
               <a
                 href={education.credentialUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-[#8BA4C0] hover:text-[#00D4FF] transition-colors"
+                className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-theme-muted hover:text-glint transition-colors"
               >
                 Verificar <ExternalLink size={13} />
               </a>
@@ -99,11 +99,11 @@ export default function EducationCard({ education, onViewImage, className = '' }
   // ========== LEVEL 1: Card completa con imagen ==========
   return (
     <article
-      className={`group flex flex-col bg-[#1E3A5F] border rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-[#3B82C4] ${config.border} ${className}`}
+      className={`group flex flex-col bg-theme-card backdrop-blur-md border rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-black/10 ${config.border} ${className}`}
     >
       {/* Zona de imagen */}
       <div
-        className="relative aspect-[4/3] w-full overflow-hidden bg-[#0A1628]/60 cursor-pointer"
+        className="relative aspect-[4/3] w-full overflow-hidden bg-theme-bg/60 cursor-pointer"
         onClick={onViewImage}
       >
         {showImage ? (
@@ -114,7 +114,7 @@ export default function EducationCard({ education, onViewImage, className = '' }
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
         ) : (
-          <div className="w-full h-full flex flex-col items-center justify-center text-[#8BA4C0] gap-2 bg-[#0A1628]/50">
+          <div className="w-full h-full flex flex-col items-center justify-center text-theme-muted gap-2 bg-theme-bg/50">
             <Award className="w-12 h-12 opacity-30" />
             <span className="text-[10px] font-bold uppercase tracking-widest opacity-40">
               Sin imagen
@@ -123,12 +123,12 @@ export default function EducationCard({ education, onViewImage, className = '' }
         )}
 
         {/* Overlay al hover */}
-        <div className="absolute inset-0 bg-[#0A1628]/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
-          <Eye className="w-8 h-8 text-[#F0F4F8] drop-shadow-lg" />
+        <div className="absolute inset-0 bg-theme-bg/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
+          <Eye className="w-8 h-8 text-theme-text drop-shadow-lg" />
         </div>
 
         {/* Año */}
-        <span className="absolute top-2 right-2 px-2 py-1 text-[10px] font-mono font-bold bg-[#0A1628]/80 backdrop-blur-md text-[#F0F4F8] rounded-md border border-[#3B82C4]/30">
+        <span className="absolute top-2 right-2 px-2 py-1 text-[10px] font-mono font-bold bg-theme-bg/80 backdrop-blur-md text-theme-text rounded-md border border-theme-border">
           {education.year}
         </span>
       </div>
@@ -145,17 +145,17 @@ export default function EducationCard({ education, onViewImage, className = '' }
         </div>
 
         <h3
-          className="text-sm font-bold text-[#F0F4F8] leading-tight mb-1 line-clamp-2"
+          className="text-sm font-bold text-theme-text leading-tight mb-1 line-clamp-2"
           title={education.title}
         >
           {education.title}
         </h3>
-        <p className="text-xs text-[#8BA4C0] mb-4 line-clamp-1">{education.issuer}</p>
+        <p className="text-xs text-theme-muted mb-4 line-clamp-1">{education.issuer}</p>
 
-        <div className="mt-auto pt-3 border-t border-[#3B82C4]/25 flex items-center justify-between gap-2">
+        <div className="mt-auto pt-3 border-t border-theme-border flex items-center justify-between gap-2">
           <button
             onClick={onViewImage}
-            className="flex items-center gap-1.5 text-[11px] font-semibold text-[#8BA4C0] hover:text-[#00D4FF] transition-colors cursor-pointer"
+            className="flex items-center gap-1.5 text-[11px] font-semibold text-theme-muted hover:text-glint transition-colors cursor-pointer"
           >
             <Eye size={14} /> Ver
           </button>
@@ -165,7 +165,7 @@ export default function EducationCard({ education, onViewImage, className = '' }
               href={education.credentialUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-[11px] font-semibold text-[#8BA4C0] hover:text-[#00D4FF] transition-colors"
+              className="flex items-center gap-1.5 text-[11px] font-semibold text-theme-muted hover:text-glint transition-colors"
             >
               Verificar <ExternalLink size={14} />
             </a>

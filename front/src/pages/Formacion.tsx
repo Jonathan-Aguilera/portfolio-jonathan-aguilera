@@ -16,7 +16,6 @@ export default function Formacion() {
   const dragStart = useRef({ x: 0, y: 0 });
   const positionStart = useRef({ x: 0, y: 0 });
 
-  // Separación de datos
   const academicCertificates = certificatesData.filter((cert) => cert.level === 1);
   const technicalCertificates = certificatesData.filter((cert) => cert.level === 2);
 
@@ -114,15 +113,15 @@ export default function Formacion() {
 
   return (
     <section id="education" className="px-8 lg:px-12 py-20 max-w-6xl mx-auto space-y-16">
-      
+
       {/* ===================== SECCIÓN 1: CERTIFICADOS ACADÉMICOS ===================== */}
       <div>
         <div className="flex items-center gap-4 mb-8">
-          <GraduationCap className="w-8 h-8 text-[#00D4FF]" />
-          <h2 className="text-3xl sm:text-4xl font-bold text-[#F0F4F8] tracking-tight">
+          <GraduationCap className="w-8 h-8 text-glint" />
+          <h2 className="text-3xl sm:text-4xl font-bold text-theme-text tracking-tight">
             Certificados Académicos
           </h2>
-          <div className="h-px bg-gradient-to-r from-[#00D4FF]/50 to-transparent flex-1 ml-4" />
+          <div className="h-px bg-gradient-to-r from-glint/50 to-transparent flex-1 ml-4" />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
@@ -139,11 +138,11 @@ export default function Formacion() {
       {/* ===================== SECCIÓN 2: CERTIFICACIONES TÉCNICAS ===================== */}
       <div>
         <div className="flex items-center gap-4 mb-8">
-          <BookOpen className="w-7 h-7 text-[#00D4FF]" />
-          <h2 className="text-2xl sm:text-3xl font-bold text-[#F0F4F8] tracking-tight">
+          <BookOpen className="w-7 h-7 text-glint" />
+          <h2 className="text-2xl sm:text-3xl font-bold text-theme-text tracking-tight">
             Certificaciones Técnicas
           </h2>
-          <div className="h-px bg-gradient-to-r from-[#00D4FF]/40 to-transparent flex-1 ml-4" />
+          <div className="h-px bg-gradient-to-r from-glint/40 to-transparent flex-1 ml-4" />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
@@ -161,7 +160,7 @@ export default function Formacion() {
       {selectedCert && selectedCert.level === 1 && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8">
           <div
-            className={`absolute inset-0 bg-[#0A1628]/80 backdrop-blur-sm modal-overlay ${
+            className={`absolute inset-0 bg-theme-bg/80 backdrop-blur-sm modal-overlay ${
               isClosing ? 'closing' : ''
             }`}
             onClick={closeModal}
@@ -169,17 +168,17 @@ export default function Formacion() {
 
           <div
             onClick={(e) => e.stopPropagation()}
-            className={`relative z-10 w-full max-w-4xl max-h-[90vh] bg-[#1E3A5F] border border-[#3B82C4]/50 rounded-2xl shadow-2xl overflow-hidden flex flex-col modal-content ${
+            className={`relative z-10 w-full max-w-4xl max-h-[90vh] bg-theme-card backdrop-blur-xl border border-theme-border rounded-2xl shadow-2xl overflow-hidden flex flex-col modal-content ${
               isClosing ? 'closing' : ''
             }`}
           >
             {/* Header del modal */}
-            <div className="flex items-center justify-between p-4 border-b border-[#3B82C4]/30 bg-[#1E3A5F]/80 backdrop-blur-md">
+            <div className="flex items-center justify-between p-4 border-b border-theme-border bg-theme-bg/30 backdrop-blur-sm">
               <div className="min-w-0 flex-1 pr-4">
-                <h3 className="text-lg font-bold text-[#F0F4F8] truncate">
+                <h3 className="text-lg font-bold text-theme-text truncate">
                   {selectedCert.title}
                 </h3>
-                <p className="text-sm text-[#8BA4C0]">
+                <p className="text-sm text-theme-muted">
                   {selectedCert.issuer} · {selectedCert.year}
                 </p>
               </div>
@@ -189,32 +188,32 @@ export default function Formacion() {
                 <button
                   onClick={handleZoomOut}
                   disabled={zoom <= 1}
-                  className="p-2 bg-[#0A1628]/50 hover:bg-[#3B82C4]/30 disabled:opacity-40 disabled:cursor-not-allowed rounded-lg text-[#F0F4F8] transition-colors cursor-pointer"
+                  className="p-2 bg-theme-bg/50 hover:bg-glint/20 disabled:opacity-40 disabled:cursor-not-allowed rounded-lg text-theme-text transition-colors cursor-pointer"
                   aria-label="Alejar"
                   title="Alejar"
                 >
                   <ZoomOut size={18} />
                 </button>
 
-                <span className="text-xs font-mono text-[#8BA4C0] w-12 text-center">
+                <span className="text-xs font-mono text-theme-muted w-12 text-center">
                   {Math.round(zoom * 100)}%
                 </span>
 
                 <button
                   onClick={handleZoomIn}
                   disabled={zoom >= 3}
-                  className="p-2 bg-[#0A1628]/50 hover:bg-[#3B82C4]/30 disabled:opacity-40 disabled:cursor-not-allowed rounded-lg text-[#F0F4F8] transition-colors cursor-pointer"
+                  className="p-2 bg-theme-bg/50 hover:bg-glint/20 disabled:opacity-40 disabled:cursor-not-allowed rounded-lg text-theme-text transition-colors cursor-pointer"
                   aria-label="Acercar"
                   title="Acercar"
                 >
                   <ZoomIn size={18} />
                 </button>
 
-                <div className="w-px h-6 bg-[#3B82C4]/30 mx-1" />
+                <div className="w-px h-6 bg-theme-border mx-1" />
 
                 <button
                   onClick={closeModal}
-                  className="p-2 bg-[#0A1628]/50 hover:bg-[#3B82C4]/30 rounded-lg text-[#F0F4F8] transition-colors cursor-pointer"
+                  className="p-2 bg-theme-bg/50 hover:bg-glint/20 rounded-lg text-theme-text transition-colors cursor-pointer"
                   aria-label="Cerrar"
                 >
                   <X size={20} />
@@ -223,7 +222,7 @@ export default function Formacion() {
             </div>
 
             {/* Área de la imagen con zoom + arrastre */}
-            <div className="relative flex-1 bg-[#0A1628]/60 overflow-hidden p-4 flex items-center justify-center">
+            <div className="relative flex-1 bg-theme-bg/60 overflow-hidden p-4 flex items-center justify-center">
               {hasValidImage ? (
                 <div
                   className={`select-none touch-none ${
@@ -252,7 +251,7 @@ export default function Formacion() {
                   />
                 </div>
               ) : (
-                <div className="flex flex-col items-center justify-center text-[#8BA4C0] gap-4 p-12 w-full h-[50vh] bg-[#0A1628]/40 rounded-xl border border-dashed border-[#3B82C4]/30">
+                <div className="flex flex-col items-center justify-center text-theme-muted gap-4 p-12 w-full h-[50vh] bg-theme-bg/40 rounded-xl border border-dashed border-theme-border">
                   <Award className="w-24 h-24 opacity-30" />
                   <span className="text-sm font-bold uppercase tracking-widest opacity-50 text-center">
                     Imagen del certificado no disponible

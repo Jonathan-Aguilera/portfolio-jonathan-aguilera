@@ -15,10 +15,10 @@ export default function NewsCard({ post }: NewsCardProps) {
   return (
     <Link
       to={`/noticias/${post.slug}`}
-      className="group block rounded-2xl bg-[#1E3A5F] border border-[#3B82C4]/30 p-6 transition-all duration-200 hover:border-[#3B82C4]/60 hover:bg-[#1E3A5F]/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00D4FF]"
+      className="group block rounded-2xl bg-theme-card backdrop-blur-md border border-theme-border p-6 transition-all duration-200 hover:border-glint/50 hover:bg-theme-card-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-glint"
     >
       {/* Metadata */}
-      <div className="flex flex-wrap items-center gap-2 text-xs text-[#8BA4C0] mb-3">
+      <div className="flex flex-wrap items-center gap-2 text-xs text-theme-muted mb-3">
         <time dateTime={post.date}>
           {dateFormatter.format(new Date(post.date))}
         </time>
@@ -31,12 +31,12 @@ export default function NewsCard({ post }: NewsCardProps) {
       </div>
 
       {/* Título */}
-      <h3 className="text-xl sm:text-2xl font-semibold text-[#F0F4F8] mb-2 group-hover:text-[#00D4FF] transition-colors">
+      <h3 className="text-xl sm:text-2xl font-semibold text-theme-text mb-2 group-hover:text-glint transition-colors">
         {post.title}
       </h3>
 
       {/* Extracto */}
-      <p className="text-sm text-[#8BA4C0] leading-relaxed line-clamp-3">
+      <p className="text-sm text-theme-muted leading-relaxed line-clamp-3">
         {post.excerpt}
       </p>
 
@@ -46,7 +46,7 @@ export default function NewsCard({ post }: NewsCardProps) {
           {post.tags.map((tag) => (
             <li
               key={tag}
-              className="text-xs px-2.5 py-1 rounded-md bg-[#0A1628]/50 text-[#F0F4F8] border border-[#3B82C4]/30"
+              className="text-xs px-2.5 py-1 rounded-md bg-theme-bg/50 text-theme-text border border-theme-border"
             >
               {tag}
             </li>

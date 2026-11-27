@@ -1,111 +1,118 @@
 @import "tailwindcss";
 
+/* 1. Modo Claro */
+:root {
+  --theme-bg: #B3D4E8;
+  --theme-text: #0A1F33;
+  --theme-text-muted: #2C4B6B;
+  --theme-card: #CDE2F0;
+  --theme-card-hover: #DCEAF5;
+  --theme-border: #90B7D3;
+  --theme-header: rgba(179, 212, 232, 0.85);
+}
+
+/* 2. Modo Oscuro */
+.dark {
+  --theme-bg: #09121E;
+  --theme-text: #F0F4F8;
+  --theme-text-muted: #8BA4C0;
+  --theme-card: rgba(26, 73, 126, 0.25);
+  --theme-card-hover: rgba(26, 73, 126, 0.45);
+  --theme-border: rgba(59, 130, 196, 0.2);
+  --theme-header: rgba(9, 18, 30, 0.85);
+}
+
+/* 3. Mapeo a Tailwind v4 */
 @theme {
-  /* Superficie (cielo) */
-  --color-sky-deep:  #0F2A4A;
-  --color-sky-mid:   #2C6AA6;
+  --color-sky-deep: #0F2A4A;
+  --color-sky-mid: #2C6AA6;
   --color-sky-light: #5FA8E8;
-  --color-sky-sun:   #FFC27A;
-
-  /* Mar superior */
+  --color-sky-sun: #FFC27A;
   --color-sea-surface: #427EB5;
-  --color-sea-top:     #205A8E;
-  --color-sea-mid:     #1C497D;
-  --color-sea-deep:    #1A497E;
-
-  /* Mar inferior / abismo */
-  --color-abyss-top:  #1A497E;
-  --color-abyss-mid:  #1B2F47;
+  --color-sea-top: #205A8E;
+  --color-sea-mid: #1C497D;
+  --color-sea-deep: #1A497E;
+  --color-abyss-top: #1A497E;
+  --color-abyss-mid: #1B2F47;
   --color-abyss-deep: #09121E;
-
-  /* Acento decorativo — NUNCA texto sobre fondo claro */
   --color-glint: #3B98FF;
+
+  --color-theme-bg: var(--theme-bg);
+  --color-theme-text: var(--theme-text);
+  --color-theme-muted: var(--theme-text-muted);
+  --color-theme-card: var(--theme-card);
+  --color-theme-card-hover: var(--theme-card-hover);
+  --color-theme-border: var(--theme-border);
+  --color-theme-header: var(--theme-header);
 }
 
+/* 4. Fondos y Base */
 @layer base {
+  /* IMPORTANTE: El fondo base debe estar en el HTML para que View Transitions lo capture */
+  html {
+    background-color: var(--theme-bg);
+  }
+
   body {
-    background-color: var(--color-abyss-deep);
+    color: var(--theme-text);
+    /* Se ELIMINÓ la transición del body porque View Transitions hace el trabajo */
+    background: linear-gradient(135deg, #B3D4E8 0%, #9BC4DE 50%, #7FB3D5 100%);
+    background-attachment: fixed;
+  }
+
+  html.dark body {
+    background: linear-gradient(135deg, #040911 0%, #09121E 40%, #0F2A4A 100%);
   }
 }
 
+/* 5. Zonas del océano */
 @layer components {
-  .zone-surface {
-    background: var(--color-sky-light);
-  }
-
-  .zone-upper-sea {
-    background: linear-gradient(
-      to bottom,
-      var(--color-sea-top)  0%,
-      var(--color-sea-mid)  45%,
-      var(--color-sea-deep) 100%
-    );
-  }
-
-  .zone-deep-sea {
-    background: linear-gradient(
-      to bottom,
-      var(--color-abyss-top)  0%,
-      var(--color-abyss-mid)  55%,
-      var(--color-abyss-deep) 100%
-    );
-  }
+  .zone-surface { background: var(--color-sky-light); }
+  .zone-upper-sea { background: linear-gradient(to bottom, var(--color-sea-top) 0%, var(--color-sea-mid) 45%, var(--color-sea-deep) 100%); }
+  .zone-deep-sea { background: linear-gradient(to bottom, var(--color-abyss-top) 0%, var(--color-abyss-mid) 55%, var(--color-abyss-deep) 100%); }
 }
 
-/* ---- Modal de proyectos ---- */
-@keyframes modal-fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* 6. Modales y Animaciones */
+@keyframes modal-fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modal-fade-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes modal-zoom-in { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+@keyframes modal-zoom-out { from { opacity: 1; transform: scale(1); } to { opacity: 0; transform: scale(0.96); } }
+.modal-overlay { animation: modal-fade-in 200ms ease-out; }
+.modal-overlay.closing { animation: modal-fade-out 200ms ease-in forwards; }
+.modal-content { animation: modal-zoom-in 250ms cubic-bezier(0.16, 1, 0.3, 1); }
+.modal-content.closing { animation: modal-zoom-out 200ms ease-in forwards; }
+
+/* =========================================
+   7. ANIMACIÓN DE CAMBIO DE TEMA (OLA)
+   ========================================= */
+
+/* El tema viejo se queda estático */
+::view-transition-old(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }
 
-@keyframes modal-fade-out {
-  from { opacity: 1; }
-  to { opacity: 0; }
+/* El tema nuevo se expande */
+::view-transition-new(root) {
+  animation: reveal-theme 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  mix-blend-mode: normal;
 }
 
-@keyframes modal-zoom-in {
+@keyframes reveal-theme {
   from {
-    opacity: 0;
-    transform: scale(0.96);
+    clip-path: circle(0px at var(--click-x, 50%) var(--click-y, 50%));
   }
   to {
-    opacity: 1;
-    transform: scale(1);
+    clip-path: circle(var(--click-radius, 150vmax) at var(--click-x, 50%) var(--click-y, 50%));
   }
 }
 
-@keyframes modal-zoom-out {
-  from {
-    opacity: 1;
-    transform: scale(1);
-  }
-  to {
-    opacity: 0;
-    transform: scale(0.96);
-  }
-}
-
-.modal-overlay {
-  animation: modal-fade-in 200ms ease-out;
-}
-
-.modal-overlay.closing {
-  animation: modal-fade-out 200ms ease-in forwards;
-}
-
-.modal-content {
-  animation: modal-zoom-in 250ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.modal-content.closing {
-  animation: modal-zoom-out 200ms ease-in forwards;
-}
-
+/* Respetar la preferencia de movimiento reducido */
 @media (prefers-reduced-motion: reduce) {
-  .modal-overlay,
-  .modal-content,
-  .modal-overlay.closing,
-  .modal-content.closing {
+  .modal-overlay, .modal-content, .modal-overlay.closing, .modal-content.closing {
+    animation-duration: 0.01ms !important;
+  }
+  ::view-transition-new(root) {
     animation-duration: 0.01ms !important;
   }
 }

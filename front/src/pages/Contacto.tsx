@@ -40,40 +40,40 @@ export default function Contacto() {
   };
 
   return (
-    <section id="contact" className="px-6 py-16 max-w-5xl mx-auto border-t border-[#3B82C4]/30">
+    <section id="contact" className="px-6 py-16 max-w-5xl mx-auto border-t border-theme-border">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* Columna de Información */}
         <div className="flex flex-col justify-between">
           <div>
-            <h2 className="text-3xl font-bold mb-4 text-[#F0F4F8]">
+            <h2 className="text-3xl font-bold mb-4 text-theme-text">
               Hablemos
             </h2>
-            <p className="text-[#8BA4C0] text-lg mb-6 leading-relaxed">
+            <p className="text-theme-muted text-lg mb-6 leading-relaxed">
               Estoy disponible para nuevas oportunidades profesionales, proyectos freelance o
               colaboraciones. Si tenés una propuesta o simplemente querés saludar, ¡completá el formulario!
             </p>
 
             <div className="space-y-4">
-              <div className="flex items-center gap-3 text-[#8BA4C0]">
-                <span className="text-[#00D4FF] text-xl">📍</span>
+              <div className="flex items-center gap-3 text-theme-muted">
+                <span className="text-glint text-xl">📍</span>
                 <span>Buenos Aires, Argentina</span>
               </div>
-              <div className="flex items-center gap-3 text-[#8BA4C0]">
-                <span className="text-[#00D4FF] text-xl">📧</span>
+              <div className="flex items-center gap-3 text-theme-muted">
+                <span className="text-glint text-xl">📧</span>
                 <span>jonathan.aguilera.dev@gmail.com</span>
               </div>
             </div>
           </div>
 
-          <div className="mt-8 pt-8 border-t border-[#3B82C4]/30 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+          <div className="mt-8 pt-8 border-t border-theme-border flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
             <div>
-              <p className="text-[#8BA4C0] mb-3">También podés encontrarme en:</p>
+              <p className="text-theme-muted mb-3">También podés encontrarme en:</p>
               <div className="flex gap-4">
                 <a
                   href="https://github.com/Jonathan-Aguilera"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-lg bg-[#1E3A5F] hover:bg-[#3B82C4]/30 text-[#00D4FF] border border-[#3B82C4]/40 transition-all text-sm font-medium"
+                  className="px-4 py-2 rounded-lg bg-theme-card backdrop-blur-md hover:bg-theme-card-hover text-glint border border-theme-border transition-all text-sm font-medium"
                 >
                   GitHub
                 </a>
@@ -81,7 +81,7 @@ export default function Contacto() {
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 rounded-lg bg-[#1E3A5F] hover:bg-[#3B82C4]/30 text-[#00D4FF] border border-[#3B82C4]/40 transition-all text-sm font-medium"
+                  className="px-4 py-2 rounded-lg bg-theme-card backdrop-blur-md hover:bg-theme-card-hover text-glint border border-theme-border transition-all text-sm font-medium"
                 >
                   LinkedIn
                 </a>
@@ -89,14 +89,14 @@ export default function Contacto() {
             </div>
 
             <div>
-              <p className="text-[#8BA4C0] mb-3">¿Querés ver mi CV?</p>
+              <p className="text-theme-muted mb-3">¿Querés ver mi CV?</p>
               <button
                 type="button"
                 onClick={(e) => {
                   e.preventDefault();
                   alert("📄 Simulación: Aquí se descargará mi CV en formato PDF.");
                 }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#00D4FF]/10 hover:bg-[#00D4FF]/20 text-[#00D4FF] border border-[#00D4FF]/30 hover:border-[#00D4FF]/50 transition-all text-sm font-semibold"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-glint/10 hover:bg-glint/20 text-glint border border-glint/30 hover:border-glint/50 transition-all text-sm font-semibold"
               >
                 <span>📥</span> Descargar CV
               </button>
@@ -105,10 +105,10 @@ export default function Contacto() {
         </div>
 
         {/* Columna del Formulario */}
-        <div className="bg-[#1E3A5F] p-6 md:p-8 rounded-2xl border border-[#3B82C4]/40">
+        <div className="bg-theme-card backdrop-blur-md p-6 md:p-8 rounded-2xl border border-theme-border">
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label htmlFor="nombre" className="block text-sm font-medium text-[#F0F4F8] mb-2">
+              <label htmlFor="nombre" className="block text-sm font-medium text-theme-text mb-2">
                 Nombre Completo
               </label>
               <input
@@ -119,12 +119,12 @@ export default function Contacto() {
                 value={formData.nombre}
                 onChange={handleChange}
                 placeholder="Juan Pérez"
-                className="w-full px-4 py-2.5 rounded-lg bg-[#0A1628]/60 border border-[#3B82C4]/40 text-[#F0F4F8] placeholder-[#8BA4C0] focus:outline-none focus:border-[#00D4FF] focus:ring-1 focus:ring-[#00D4FF] transition-all"
+                className="w-full px-4 py-2.5 rounded-lg bg-theme-bg/60 border border-theme-border text-theme-text placeholder-theme-muted focus:outline-none focus:border-glint focus:ring-1 focus:ring-glint transition-all"
               />
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-[#F0F4F8] mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-theme-text mb-2">
                 Correo Electrónico
               </label>
               <input
@@ -135,12 +135,12 @@ export default function Contacto() {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="juan@ejemplo.com"
-                className="w-full px-4 py-2.5 rounded-lg bg-[#0A1628]/60 border border-[#3B82C4]/40 text-[#F0F4F8] placeholder-[#8BA4C0] focus:outline-none focus:border-[#00D4FF] focus:ring-1 focus:ring-[#00D4FF] transition-all"
+                className="w-full px-4 py-2.5 rounded-lg bg-theme-bg/60 border border-theme-border text-theme-text placeholder-theme-muted focus:outline-none focus:border-glint focus:ring-1 focus:ring-glint transition-all"
               />
             </div>
 
             <div>
-              <label htmlFor="asunto" className="block text-sm font-medium text-[#F0F4F8] mb-2">
+              <label htmlFor="asunto" className="block text-sm font-medium text-theme-text mb-2">
                 Motivo del Contacto
               </label>
               <select
@@ -148,7 +148,7 @@ export default function Contacto() {
                 name="asunto"
                 value={formData.asunto}
                 onChange={handleChange}
-                className="w-full px-4 py-2.5 rounded-lg bg-[#0A1628]/60 border border-[#3B82C4]/40 text-[#F0F4F8] focus:outline-none focus:border-[#00D4FF] focus:ring-1 focus:ring-[#00D4FF] transition-all cursor-pointer"
+                className="w-full px-4 py-2.5 rounded-lg bg-theme-bg/60 border border-theme-border text-theme-text focus:outline-none focus:border-glint focus:ring-1 focus:ring-glint transition-all cursor-pointer"
               >
                 <option value="Oportunidad Laboral">Oportunidad Laboral (Propuesta)</option>
                 <option value="Proyecto Freelance">Proyecto Freelance / Colaboración</option>
@@ -159,7 +159,7 @@ export default function Contacto() {
             </div>
 
             <div>
-              <label htmlFor="mensaje" className="block text-sm font-medium text-[#F0F4F8] mb-2">
+              <label htmlFor="mensaje" className="block text-sm font-medium text-theme-text mb-2">
                 Mensaje
               </label>
               <textarea
@@ -170,14 +170,14 @@ export default function Contacto() {
                 value={formData.mensaje}
                 onChange={handleChange}
                 placeholder="Escribe tu mensaje aquí..."
-                className="w-full px-4 py-2.5 rounded-lg bg-[#0A1628]/60 border border-[#3B82C4]/40 text-[#F0F4F8] placeholder-[#8BA4C0] focus:outline-none focus:border-[#00D4FF] focus:ring-1 focus:ring-[#00D4FF] transition-all resize-none"
+                className="w-full px-4 py-2.5 rounded-lg bg-theme-bg/60 border border-theme-border text-theme-text placeholder-theme-muted focus:outline-none focus:border-glint focus:ring-1 focus:ring-glint transition-all resize-none"
               />
             </div>
 
             <button
               type="submit"
               disabled={isSubmitting}
-              className={`w-full py-3 px-4 rounded-lg bg-[#00D4FF] hover:bg-[#3B82C4] text-[#0A1628] font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#00D4FF] focus:ring-offset-2 focus:ring-offset-[#1E3A5F] ${
+              className={`w-full py-3 px-4 rounded-lg bg-glint hover:bg-glint/85 text-[#0A1628] font-semibold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-glint focus:ring-offset-2 focus:ring-offset-theme-card ${
                 isSubmitting ? "opacity-75 cursor-not-allowed" : ""
               }`}
             >
