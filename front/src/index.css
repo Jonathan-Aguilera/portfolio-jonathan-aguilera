@@ -50,16 +50,30 @@
   --theme-header: rgba(9, 18, 30, 0.85);
 
   /* ─── HOME: Océano (noche) ─── */
-  --ocean-upper-1: #1A3F5E;
-  --ocean-upper-2: #122E48;
-  --ocean-upper-3: #0A1F35;
-  --ocean-deep-1: #0A1F35;
-  --ocean-deep-2: #051020;
-  --ocean-deep-3: #020810;
+  /* Descenso monótono de luminancia: superficie → abismo.
+     upper-1 es el punto de anclaje con la imagen de superficie (fondoMarPulido2),
+     por eso es el tono más "levantado" de la noche. */
+  --ocean-upper-1: #03212A;
+  --ocean-upper-2: #041D26;
+  --ocean-upper-3: #051923;
 
-  /* Viñeta más profunda de noche */
-  --ocean-vignette-highlight: rgba(255, 255, 255, 0.02);
-  --ocean-vignette-shadow: rgba(0, 0, 0, 0.45);
+  --ocean-deep-1: #06151F;
+  --ocean-deep-2: #07121B;
+  --ocean-deep-3: #02080C;
+
+  /* Viñeta nocturna: apenas insinúa luz central y sombrea bordes */
+  --ocean-vignette-highlight: rgba(255, 255, 255, 0.03);
+  --ocean-vignette-shadow: rgba(0, 0, 0, 0.35);
+
+  /* ─── HOME: Cards flotantes sobre el océano (noche) ─── */
+  /* Sobre un mar muy oscuro, las cards suben de luminancia
+     (efecto "panel que flota sobre el agua") en vez de bajar. */
+  --ocean-card: rgba(15, 42, 74, 0.65);
+  --ocean-text: #F0F4F8;
+  --ocean-muted: #8BA4C0;
+  --ocean-border: rgba(79, 179, 255, 0.25);
+  --ocean-border-hover: rgba(79, 179, 255, 0.55);
+  --ocean-glint: #5FC8FF;
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -141,8 +155,10 @@
 
 
   /* Mar alto: transición continua entre los tonos cercanos.
-     upper-1 === upper-2 → la franja superior es plana (cerca de la superficie).
-     upper-2 → upper-3 hace el descenso hacia la profundidad. */
+     La mecánica es idéntica en día y noche; sólo cambian los valores.
+       · Día:   upper-1 === upper-2  → franja plana en la superficie.
+       · Noche: upper-1  >  upper-2  → descenso progresivo desde el píxel 0.
+     upper-2 → upper-3 cierra el descenso hacia la profundidad. */
   .zone-upper-sea {
     background: linear-gradient(to bottom,
         var(--ocean-upper-1) 0%,
