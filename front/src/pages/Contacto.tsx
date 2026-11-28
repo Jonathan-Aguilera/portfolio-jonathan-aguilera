@@ -158,7 +158,7 @@ export default function Contacto({ variant = 'default' }: ContactoProps) {
                   GitHub
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/jonathanfullstack"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`px-4 py-2 rounded-lg transition-all text-sm font-medium ${s.socialBtn}`}

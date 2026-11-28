@@ -25,19 +25,19 @@ export default function Footer() {
                   <GitBranch size={16} />
                   <span>GitHub</span>
                 </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-cyan-400 transition-colors">
+                <a href="https://www.linkedin.com/in/jonathanfullstack" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-cyan-400 transition-colors">
                   <BriefcaseBusiness size={16} />
                   <span>LinkedIn</span>
                 </a>
-                <a href="mailto:jonathan.aguilera.dev@gmail.com" className="flex items-center gap-1.5 hover:text-cyan-400 transition-colors">
+                <a href="mailto:timestormcreations@gmail.com" className="flex items-center gap-1.5 hover:text-cyan-400 transition-colors">
                   <Mail size={16} />
                   <span>Email</span>
                 </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-cyan-400 transition-colors">
+                <a href="https://instagram.com/jackkciroesc" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-cyan-400 transition-colors">
                   <Camera size={16} />
                   <span>Instagram</span>
                 </a>
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-cyan-400 transition-colors">
+                <a href="https://www.youtube.com/channel/UC_IgEWuUVBk1F6nlvYe4jRw" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-cyan-400 transition-colors">
                   <Play size={16} />
                   <span>YouTube</span>
                 </a>
